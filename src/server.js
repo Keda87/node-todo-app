@@ -7,6 +7,7 @@ import bodyParser from 'body-parser'
 const app = express()
 const PORT = 3000
 
+// eslint-disable-next-line no-undef
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://user:password@127.0.0.1:27017/db_name')
 

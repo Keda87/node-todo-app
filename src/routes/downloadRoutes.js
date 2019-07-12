@@ -4,7 +4,7 @@ import {
     getDownload,
     updateDownload,
     deleteDownload,
- }from '../controllers/downloadController'
+ } from '../controllers/downloadController'
 
 const routes = (app) => {
   app.route('/download')
