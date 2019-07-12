@@ -17,3 +17,24 @@ export function getDownloads(req, res) {
     res.json(downloads)
   })
 }
+
+export function getDownload(req, res) {
+  Download.findById(req.params.id, (error, download) => {
+    if (error) { res.json(error) }
+    res.json(download)
+  })
+}
+
+export function updateDownload(req, res) {
+  Download.findByIdAndUpdate({ _id: req.params.id }, res.Body, { new: true }, (error, download) => {
+    if (error) { res.json(error) }
+    res.json(download)
+  })
+}
+
+export function deleteDownload(req, res) {
+  Download.remove({ _id: req.params.id }, (error, download) => {
+    if (error) { res.json(error) }
+    res.json(download)
+  })
+}

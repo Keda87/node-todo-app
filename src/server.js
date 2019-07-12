@@ -7,8 +7,8 @@ import bodyParser from 'body-parser'
 const app = express()
 const PORT = 3000
 
-// mongoose.Promise = global.Promise
-// mongoose.connect('mongodb://user:password@ds239648.mlab.com:39648/db_name')
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://user:password@127.0.0.1:27017/db_name')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
