@@ -1,0 +1,19 @@
+version: "3"
+services: 
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/sourcecode
+    links: 
+      - db
+    env_file: .env
+    command: yarn start
+  db:
+    image: mongo:3.6.13
+    ports:
+      - "27017:27017"
+    volumes:
+      -  ./init:/docker-entrypoint-initdb.d/
+    env_file: .env
