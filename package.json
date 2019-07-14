@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist",
-    "serve": "node dist/server.js"
+    "serve": "node dist/server.js",
+    "test": "NODE_ENV=test mocha dist/tests --recursive --exit"
   },
   "keywords": [],
   "author": "Keda87",
@@ -21,6 +22,10 @@
     "@babel/core": "7.5.4",
     "@babel/node": "7.5.0",
     "@babel/preset-env": "^7.5.4",
-    "eslint": "6.0.1"
+    "chai": "4.2.0",
+    "chai-http": "4.3.0",
+    "eslint": "6.0.1",
+    "mocha": "6.1.4",
+    "mongodb-memory-server": "5.1.5"
   }
 }
