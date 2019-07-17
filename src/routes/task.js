@@ -1,12 +1,14 @@
 import { 
-   addNewTask,
-   getTasks,
-   getTask,
-   updateTask,
-   deleteTask,
+  addNewTask,
+  getTasks,
+  getTask,
+  updateTask,
+  deleteTask,
  } from '../controllers/task'
 
 const routes = (app) => {
+  app.get('/', (req, res) => res.send({message: 'Todo API'}))
+
   app.route('/tasks')
      .get(getTasks)
      .post(addNewTask)
