@@ -15,7 +15,7 @@ export function connect() {
   return new Promise((resolve, reject) => {
 
     if (process.env.NODE_ENV === 'test') {
-      const mongoServer = new MongoMemoryServer({ debug: true })
+      const mongoServer = new MongoMemoryServer()
       mongoServer.getConnectionString()
         .then((mongoUri) => {
           mongoose.createConnection(mongoUri, { useNewUrlParser: true })
