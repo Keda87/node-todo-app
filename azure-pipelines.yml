@@ -17,6 +17,15 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt-get update
+    sudo apt-get install docker-ce
+    sudo service docker start
+  displayName: 'install docker'
+
+- script: |
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
     sudo apt-get update
@@ -25,17 +34,14 @@ steps:
   displayName: 'install mongodb'
 
 - script: |
-    npm install -g yarn
-  displayName: 'install yarn'
-
-- script: |
     yarn install
-  displayName: 'install project dependencies'
+    yarn build
+  displayName: 'install and build project dependencies'
 
 - script: |
-    yarn build
-  displayName: 'build project'
+    sudo docker-compose up --build
+  displayName: 'docker build'
 
-# - script: |
-#     yarn test
-#   displayName: 'run all tests'
+- script: |
+    sudo docker-compose run api yarn test
+  displayName: 'running tests'

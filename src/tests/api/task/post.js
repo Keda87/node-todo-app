@@ -11,7 +11,7 @@ import {
 import { connect, close } from '../../../models'
 
 // eslint-disable-next-line no-undef
-const BASE_URL = `api:${process.env.API_PORT}`
+const BASE_URL = `${process.env.API_HOST}:${process.env.API_PORT}`
 const expect = chai.expect
 
 chai.use(chaiHttp)
