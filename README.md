@@ -8,5 +8,5 @@ $ yarn build && docker-compose up
 
 ### TODO:
 - [x] Dockerize the app and database.
-- [ ] Implement unit testing
+- [x] Implement unit testing
 - [ ] Implement build pipeline
